@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/654f4803ef.js" crossorigin="anonymous"></script>
+    <!-- Font awesome cdnjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+    <title>SavIT - Consumer Goods Price Monitoring Application</title>
+</head>
+<body>
+    <div class="container-center center">
+        <div style="width: 500px;">
+            <div class="card-panel">
+                <div class="card-title">
+                    <h5><b>SavIT - Sign Up</b></h5>
+                </div>
+                <div class="row">
+                    <form class="col s12" action="/signup" method="post" onsubmit="return chkInputs()">
+                        <div class="row">
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_box</i>
+                                <input type="text" name="firstname" id="firstname">
+                                <label for="firstname">First Name</label>
+                            </div>
+                            <div class="input-field col s6">
+                                <i class="material-icons prefix">account_box</i>
+                                <input type="text" name="lastname" id="lastname">
+                                <label for="lastname">Last Name</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">email</i>
+                                <input type="email" name="email" id="email">
+                                <label for="email">Email</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input type="password" name="password" id="password">
+                                <label for="password">Password</label>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">lock</i>
+                                <input type="password" name="confirm_password" id="confirm_password">
+                                <label for="confirm_password">Confirm password</label>
+                            </div>
+                        </div>
+                        <button id="submitBtn" class="btn waves-effect waves-light blue" type="submit" name="action">Sign Up
+                            <i class="material-icons right">send</i>
+                        </button><br><br>
+                        <a href="../signin/">Already have account? SignIn</a>
+                    </form>
+                </div>                
+            </div>
+        </div>
+    </div>
+</body>
+    <!-- Jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Slider Init
+            $('.slider').slider({
+                indicators: false,
+                duration: 900,
+                interval: 2500
+            });
+        });
+    </script>
+    <script src="verification.js"></script>
+    
+    <script>
+        // Function to get URL parameters
+        function getParameterByName(name, url) {
+            if (!url) url = window.location.href;
+            name = name.replace(/[\[\]]/g, '\\$&');
+            var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+
+        // Check for the "alert" parameter in the URL
+        var alertParam = getParameterByName('alert');
+
+        // Show alert if the "alert" parameter is present and set to "email"
+        if (alertParam && alertParam.toLowerCase() === 'email') {
+            alert("The email you entered already exist please signup another account...");
+            window.location.href = "./";
+        }
+    </script>
+</html>

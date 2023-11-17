@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="img/S-logo.png" type="image/x-icon">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font awesome -->
+    <script src="https://kit.fontawesome.com/654f4803ef.js" crossorigin="anonymous"></script>
+    <!-- Font awesome cdnjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+    <title>SavIT - Consumer Goods Price Monitoring Application</title>
+    <script type="module" src="index.js"></script>     
+</head>
+<body>
+    <nav class="green lighten-1">
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+            <li>
+                <a style="margin-top: 4px;" id="settings">
+                    <i class="material-icons">settings</i>
+                </a>
+            </li>
+            <li>
+                <a id="user-account" class="account-settings">
+                    <i class="material-icons">account_circle</i>
+                    &nbsp;&nbsp;&nbsp;<span id="userInfo">Sign In</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="sidenav" class="sidenav blue lighten-2">
+        <ul>
+          <li class="center-align"> 
+            <img width="150px" height="140px" src="img/logo.png" alt="logo">
+          </li>
+        </ul>
+        <ul>
+            <li>
+                <a id="HomePageLink"><i class="material-icons">home</i>Home</a>
+            </li>
+            <li>
+                <a id="DealsSavingsPageLink"><i class="material-icons">local_offer</i>Deals & Savings</a>
+            </li>
+            <li>
+                <a id="CommunityPageLink"><i class="material-icons">people</i>Community</a>
+            </li>
+        </ul>
+      </div> 
+      <div id="userLocation"></div>
+      <div id="userPlanModal"></div>
+      <div id="HomePage">
+        <h4>Category</h4>
+        <div class="categorySelection">
+            <div class="row">
+                <div class="catitem col s1 blue btn white-text waves-effect waves-light">All</a></div>
+                <div class="catitemcol s1 blue btn white-text waves-effect waves-light">Rice</a></div>
+                <div class="catitem col s3 blue btn white-text waves-effect waves-light">Fruits and Vegetables</a></div>
+                <div class="catitem col s2 blue btn white-text waves-effect waves-light">Dairy Product</a></div>
+                <div class="catitem col s2 blue btn white-text waves-effect waves-light">Beverages</a></div>
+              </div>
+              <div class="priceTable">             
+                <table class="striped green lighten-1">
+                    <thead class="green">
+                    <tr>
+                        <th>Item</th>
+                        <th>Category</th>
+                        <th>Measure</th>
+                        <th>Store</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <tr>
+                        <td>JASMINE PREMIUM RICE</td>
+                        <td>Rice</td>
+                        <td>5kg</td>
+                        <td>Puregold</td>
+                        <td>Retail</td>
+                        <td>328.00</td>
+                    </tr>
+                    <tr>
+                        <td>Smirnoff Mule Vodka 330 Ml</td>
+                        <td>Beverages</td>
+                        <td>330ml</td>
+                        <td>Shopee</td>
+                        <td>Retail</td>
+                        <td>47.00</td>
+                    </tr>
+                    <tr>
+                        <td>1 Box Unsalted Butter</td>
+                        <td>Dairy Product</td>
+                        <td>1 Box (40pcs)</td>
+                        <td>Alfamart</td>
+                        <td>Wholesale</td>
+                        <td>1530.00</td>
+                    </tr>
+                    </tbody>
+                </table>
+              </div>
+        </div>
+      </div>
+      <div id="DealsSavingsPage">
+        <div class="dealsListing card center blue white-text"><br>
+            <h5 class="card-title">Find Deals and Discounts That Suits For You!</h5><br>
+            <button id="createYourList" class="btn btn-large waves-effect waves-light green rounded black-text" type="submit" name="action">Create Your List
+                <i class="material-icons right">list</i>
+            </button><br><br>
+        </div><br>
+        <div class="usersList">
+            <table class="striped green lighten-1">
+                <h5>Your List</h5>
+                <thead class="green">
+                  <tr>
+                      <th>List ID</th>
+                      <th>Name</th>
+                      <th>Date</th>
+                      <th>Status</th>
+                      <th class="center">Action</th>
+                  </tr>
+                </thead>
+        
+                <tbody>
+                  <tr>
+                    <td>7539092946</td>
+                    <td>List 1</td>
+                    <td>Active</td>
+                    <td>11-16-2023</td>
+                    <td class="center">
+                        <button id="viewList" class="btn btn-small waves-effect waves-light blue rounded black-text" name="action">View
+                            <i class="material-icons right">visibility</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Edit
+                            <i class="material-icons right">edit</i>
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>9011059638</td>
+                    <td>List 2</td>
+                    <td>Active</td>
+                    <td>11-16-2023</td>
+                    <td class="center">
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" name="action">View
+                            <i class="material-icons right">visibility</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Edit
+                            <i class="material-icons right">edit</i>
+                        </button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>1512881890</td>
+                    <td>List 3</td>
+                    <td>Active</td>
+                    <td>11-16-2023</td>
+                    <td class="center">
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">View
+                            <i class="material-icons right">visibility</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Delete
+                            <i class="material-icons right">delete</i>
+                        </button>
+                        <button class="btn btn-small waves-effect waves-light blue rounded black-text" type="submit" name="action">Edit
+                            <i class="material-icons right">edit</i>
+                        </button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+                 <br><br>   
+        </div>
+      </div>
+      <div id="CommunityPage"> 
+          <h5 class="card-title">Community Section</h5>       
+          <div class="container">
+            <div class="row">
+              <div class="col s12">
+
+                <div class="card">
+                  <div class="card-content">
+                    <span class="card-title">Puregold Deals 2023</span>
+                    <p>Nestle Products on Puregold will have big discounts from November 10-19.<br>
+                    <a href="">For more info click here.</a>
+                    </p>
+                  </div>
+                  <div class="card-image">
+                    <img src="img/NESTLE_WEB_BANNER.png">
+                  </div>
+                  <div class="card-action">
+                    <a href="#" class="blue-text">Like</a>
+                    <a href="#" class="blue-text">Comment</a>
+                  </div>
+                </div>
+        
+                <div class="card">
+                    <div class="card-content">
+                      <span class="card-title">Shopee Supermarket Deals 2023</span>
+                      <p>Upto 15% OFF on Shopee Supermarket Salu-Salo Guide.<br>
+                      <a href="">For more info click here.</a>
+                      </p>
+                    </div>
+                    <div class="card-image">
+                      <img src="img/shopee.png">
+                    </div>
+                    <div class="card-action">
+                      <a href="#" class="blue-text">Like</a>
+                      <a href="#" class="blue-text">Comment</a>
+                    </div>
+                  </div>
+                
+              </div>
+            </div>
+          </div>
+      </div>
+      <div id="listFormModal"></div>
+      <div id="viewListModal"></div>
+
+      <div id="settings_modal"></div>
+      <div id="user_account_modal"></div>
+</body>
+    <!-- Jquery CDN-->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+    <script>
+        $(document).ready(function(){
+            // Slider Init
+            $('.slider').slider({
+                indicators: false,
+                duration: 900,
+                interval: 2500
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          var elems = document.querySelectorAll(".sidenav");
+          var instances = M.Sidenav.init(elems);
+          var elems = document.querySelectorAll('select');
+          var instances = M.FormSelect.init(elems);
+        });
+    </script> 
+    <script>
+
+        var cities = {
+            "NCR": ["Caloocan", "Malabon", "Navotas", "Valenzuela", "Quezon City", "Marikina", "Pasig", "Taguig", "Makati", "Manila", "Mandaluyong", "San Juan", "Pasay", "Parañaque", "Las Piñas", "Muntinlupa", "Pateros"],
+            "IV-A": ["Batangas", "Cavite", "Laguna", "Quezon", "Rizal"],
+            "Laguna": ["Alaminos", "Bay", "Biñan", "Botocan", "Cabuyao", "Calamba", "Caluan", "Camp Vicente Lim", "Canlubang", "Cavinti", "College Los Baños", "Famy", "Kalayaan", "Liliw", "Los Baños", "Luisiana", "Lumban", "Mabitac", "Magdalena", "Majayjay", "Nagcarlan", "Paete", "Pagsanjan", "Pakil", "Pangil", "Pila", "Rizal", "San Pablo City", "San Pedro", "Siniloan", "Sta. Cruz", "Sta. Maria", "Sta. Rosa", "Victoria"],
+        };
+    
+        function updateCityDropdown() {
+            var regionSelect = document.getElementById("regionSelect");
+            var cityDropdown = document.getElementById("cityDropdown");
+            var municipalityDropdown = document.getElementById("municipalityDropdown");
+            var citySelect = document.getElementById("citySelect");
+            var municipalitySelect = document.getElementById("municipalitySelect");
+    
+            // Reset city and municipality dropdowns
+            citySelect.innerHTML = '<option value="">Select a city</option>';
+            municipalitySelect.innerHTML = '<option value="">Select a municipality</option>';
+    
+            // Populate city dropdown based on the selected region
+            var selectedRegion = regionSelect.value;
+            var cityArray = cities[selectedRegion] || [];
+    
+            for (var i = 0; i < cityArray.length; i++) {
+                var option = document.createElement("option");
+                option.value = cityArray[i];
+                option.text = cityArray[i];
+                citySelect.add(option);
+            }
+    
+            // Reset municipality dropdown
+            municipalityDropdown.style.display = "none";
+        }
+    
+        function updateMunicipalityDropdown() {
+            var citySelect = document.getElementById("citySelect");
+            var municipalityDropdown = document.getElementById("municipalityDropdown");
+            var municipalitySelect = document.getElementById("municipalitySelect");
+    
+            // Reset municipality dropdown
+            municipalitySelect.innerHTML = '<option value="">Select a municipality</option>';
+    
+            // Display or hide municipality dropdown based on the selected city
+            if (citySelect.value === "Laguna") {
+                municipalityDropdown.style.display = "block";
+    
+                // Populate municipality dropdown for Laguna
+                var municipalityArray = cities["Laguna"];
+    
+                for (var i = 0; i < municipalityArray.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = municipalityArray[i];
+                    option.text = municipalityArray[i];
+                    municipalitySelect.add(option);
+                }
+            } else {
+                municipalityDropdown.style.display = "none";
+            }
+        }
+    
+        function submitForm() {
+
+            event.preventDefault();
+
+            var region = document.getElementById("regionSelect").value;
+            var city = document.getElementById("citySelect").value;
+            var municipality = document.getElementById("municipalitySelect").value;
+            let email = localStorage.getItem("email");
+    
+            // Validate that both Region and City are selected
+            if (region === "" || city === "") {
+                alert("Please select both Region and City.");
+                return;
+            }
+    
+            // Validate that if the City is Laguna, Municipality must be selected
+            if (city === "Laguna" && municipality === "") {
+                alert("Please select a Municipality for Laguna.");
+                return;
+            }
+
+            // URL where you want to send the POST request
+            const url = "/user-location";
+
+            // Data you want to send in the request (using the logged values)
+            const data = {
+            region: region,
+            city: city,
+            municipality: municipality,
+            email: email,
+            };
+
+            // Configuration for the fetch request
+            const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Set the appropriate content type based on your data
+                // Add any additional headers if needed
+            },
+            body: JSON.stringify(data) // Convert data to JSON format
+            };
+
+            // Make the POST request using fetch
+            fetch(url, requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                console.log(response);
+                return response.text(); // or response.text() if the response is not in JSON format
+            })
+            .then(data => {
+                // Handle the response data
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', error);
+            });
+            document.getElementById("userLocation").innerHTML = "";
+            alert("Please wait a seconds...");
+            window.location.href = "./";
+        }
+
+        function choosePlan(n) {
+            console.log(n);
+            let plan = ""
+
+            if (n === 1) {
+                plan = "Free";
+            } else  if (n === 2) {
+                plan = "Basic";
+            } else  if (n === 3) {
+                plan = "Advance";
+            }
+
+            let email = localStorage.getItem("email");
+
+            const data = { 
+                plan: plan,
+                email: email,
+             };
+
+            // Configuration for the fetch request
+            const requestOptions = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', // Set the appropriate content type based on your data
+                // Add any additional headers if needed
+            },
+            body: JSON.stringify(data)
+            };
+
+            // Make the POST request using fetch
+            fetch("/user-plan", requestOptions)
+            .then(response => {
+                if (!response.ok) {
+                throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+                console.log(response);
+                alert("Plan was succesfully added");
+                document.getElementById("userPlanModal").innerHTML = "";
+                return response.text(); // or response.text() if the response is not in JSON format
+            })
+            .then(data => {
+                // Handle the response data
+                console.log(data);
+            })
+            .catch(error => {
+                // Handle errors
+                console.error('Error:', error);
+            });
+
+        }
+    </script>
+    <script>
+        let homeLink = document.getElementById("HomePageLink");
+        let dealsSavingsLink = document.getElementById("DealsSavingsPageLink");
+        let communityLink = document.getElementById("CommunityPageLink");
+        let home = document.getElementById("HomePage");
+        let dealsSavings = document.getElementById("DealsSavingsPage");
+        let community = document.getElementById("CommunityPage");
+
+        homeLink.onclick = () => {
+            community.style.display = "none";
+            dealsSavings.style.display = "none";
+            home.style.display = "block";
+        };
+
+        dealsSavingsLink.onclick = () => {
+            home.style.display = "none";
+            community.style.display = "none";
+            dealsSavings.style.display = "block";
+        };
+
+        communityLink.onclick = () => {
+            home.style.display = "none";
+            dealsSavings.style.display = "none";
+            community.style.display = "block";
+        };
+    </script>
+    <script>
+        let listFormModal = document.getElementById("listFormModal");
+        let createYourList = document.getElementById("createYourList");
+        let viewListModal = document.getElementById("viewListModal");
+        let viewListBtn = document.getElementById("viewList");
+
+        function createListBtn() {
+            listFormModal.innerHTML = "";
+        }
+
+        function deleteListBtn() {
+            listFormModal.innerHTML = "";
+        }
+
+        function closeListBtn() {
+            viewListModal.innerHTML = "";
+        }
+    
+    </script>
+</html>

@@ -1,0 +1,10 @@
+.container-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.card-title {
+    margin-bottom: 50px;
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Region, City, and Municipality Selection</title>
+</head>
+<body>
+
+    <form id="locationForm">
+        <label for="regionSelect">Select Region:</label>
+        <select id="regionSelect" name="regionSelect" onchange="updateCityDropdown()">
+            <option value="">Select Region</option>
+            <option value="NCR">NCR</option>
+            <option value="IV-A">IV-A</option>
+        </select><br>
+
+        <div id="cityDropdown">
+            <label for="citySelect">Select a city:</label>
+            <select id="citySelect" name="citySelect" onchange="updateMunicipalityDropdown()">
+                <!-- Cities will be dynamically populated based on the selected region -->
+            </select>
+        </div>
+
+        <br>
+
+        <div id="municipalityDropdown">
+            <label for="municipalitySelect">Select a municipality:</label>
+            <select id="municipalitySelect" name="municipalitySelect">
+                <!-- Municipalities will be dynamically populated based on the selected city -->
+            </select>
+        </div>
+
+        <br>
+
+        <input type="button" value="Submit" onclick="submitForm()">
+    </form>
+
+    <script>
+        var cities = {
+            "NCR": ["Caloocan", "Malabon", "Navotas", "Valenzuela", "Quezon City", "Marikina", "Pasig", "Taguig", "Makati", "Manila", "Mandaluyong", "San Juan", "Pasay", "Parañaque", "Las Piñas", "Muntinlupa", "Pateros"],
+            "IV-A": ["Batangas", "Cavite", "Laguna", "Quezon", "Rizal"],
+            "Laguna": ["Alaminos", "Bay", "Biñan", "Botocan", "Cabuyao", "Calamba", "Caluan", "Camp Vicente Lim", "Canlubang", "Cavinti", "College Los Baños", "Famy", "Kalayaan", "Liliw", "Los Baños", "Luisiana", "Lumban", "Mabitac", "Magdalena", "Majayjay", "Nagcarlan", "Paete", "Pagsanjan", "Pakil", "Pangil", "Pila", "Rizal", "San Pablo City", "San Pedro", "Siniloan", "Sta. Cruz", "Sta. Maria", "Sta. Rosa", "Victoria"],
+        };
+
+        function updateCityDropdown() {
+            var regionSelect = document.getElementById("regionSelect");
+            var cityDropdown = document.getElementById("cityDropdown");
+            var municipalityDropdown = document.getElementById("municipalityDropdown");
+            var citySelect = document.getElementById("citySelect");
+            var municipalitySelect = document.getElementById("municipalitySelect");
+
+            // Reset city and municipality dropdowns
+            citySelect.innerHTML = '<option value="">Select a city</option>';
+            municipalitySelect.innerHTML = '<option value="">Select a municipality</option>';
+
+            // Populate city dropdown based on the selected region
+            var selectedRegion = regionSelect.value;
+            var cityArray = cities[selectedRegion] || [];
+
+            for (var i = 0; i < cityArray.length; i++) {
+                var option = document.createElement("option");
+                option.value = cityArray[i];
+                option.text = cityArray[i];
+                citySelect.add(option);
+            }
+
+            // Reset municipality dropdown
+            municipalityDropdown.style.display = "none";
+        }
+
+        function updateMunicipalityDropdown() {
+            var citySelect = document.getElementById("citySelect");
+            var municipalityDropdown = document.getElementById("municipalityDropdown");
+            var municipalitySelect = document.getElementById("municipalitySelect");
+
+            // Reset municipality dropdown
+            municipalitySelect.innerHTML = '<option value="">Select a municipality</option>';
+
+            // Display or hide municipality dropdown based on the selected city
+            if (citySelect.value === "Laguna") {
+                municipalityDropdown.style.display = "block";
+
+                // Populate municipality dropdown for Laguna
+                var municipalityArray = cities["Laguna"];
+
+                for (var i = 0; i < municipalityArray.length; i++) {
+                    var option = document.createElement("option");
+                    option.value = municipalityArray[i];
+                    option.text = municipalityArray[i];
+                    municipalitySelect.add(option);
+                }
+            } else {
+                municipalityDropdown.style.display = "none";
+            }
+        }
+
+        function submitForm() {
+            var region = document.getElementById("regionSelect").value;
+            var city = document.getElementById("citySelect").value;
+            var municipality = document.getElementById("municipalitySelect").value;
+
+            // Validate that both Region and City are selected
+            if (region === "" || city === "") {
+                alert("Please select both Region and City.");
+                return;
+            }
+
+            // Validate that if the City is Laguna, Municipality must be selected
+            if (city === "Laguna" && municipality === "") {
+                alert("Please select a Municipality for Laguna.");
+                return;
+            }
+
+            // Log or process the values as needed
+            console.log("Region: " + region);
+            console.log("City: " + city);
+            console.log("Municipality: " + municipality);
+        }
+    </script>
+
+</body>
+</html>

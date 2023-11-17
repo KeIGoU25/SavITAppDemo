@@ -1,0 +1,160 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.sidenav {
+    width: 250px; /* Set the width you desire */
+    transform: translateX(0); /* Ensure it's always visible */
+    position: fixed; /* Keep it in place even when scrolling */
+    z-index: 999; /* Make sure it appears above other content */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.2); /* Add a shadow for depth */
+  }
+
+  .sidenav ul li a {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .account-settings {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  #user_account_modal {
+    position: fixed;
+    top: calc(5%);
+    right: calc(-20%);
+    width: calc(50%);
+    display: flex;
+    line-height: 3;
+    z-index: 3;
+  }
+
+  .userModal .card-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .userModal .card{
+    width: 300px;
+  }
+
+  .userModal .card-action {
+    padding: 2px 0;
+  }
+
+  .userModal .card-action a{
+    font-size: 16px;
+  }
+
+  #settings_modal {
+    position: fixed;
+    top: calc(5%);
+    right: calc(-17%);
+    width: calc(50%);
+    display: flex;
+    line-height: 3;
+    z-index: 3;
+  }
+
+  .settingsModal .card-title {
+    font-size: 18px;
+    font-weight: 700;
+  }
+
+  .settingsModal .card .card-content .card-title {
+    line-height: 0px;
+  }
+
+  .settingsModal .card{
+    width: 300px;
+  }
+
+  .settingsModal .card-action {
+    padding: 2px 0;
+  }
+
+  .settingsModal .card-action a{
+    font-size: 16px;
+  }
+
+  .userLocation {
+    margin-left: calc(40%);
+  }
+
+  #listFormModal  {
+    margin-left: calc(40%);
+    position: absolute;
+    top: 10px;
+    width: 60%;
+    z-index: 2;
+  }
+
+  #viewListModal  {
+    margin-left: calc(18%);
+    position: absolute;
+    top: 10px;
+    width: 160%;
+    z-index: 2;
+  }
+ 
+  .userPlan {
+    margin-left: calc(33%);
+    width: calc(50%);
+  }
+
+  select {
+    display: block;
+  }
+
+  a, button {
+    cursor: pointer;
+  }
+
+  #HomePage, #DealsSavingsPage, #CommunityPage {
+    margin-left: calc(20%);
+  }
+
+
+  .catitem {
+    margin-right: 10px;
+  }
+
+  #DealsSavingsPage {
+    display: none;
+  }
+
+  #CommunityPage {
+    display: none;
+  }
+ 
+  .btn {
+    border-radius: 30px;
+  }
+
+  .dealsListing {
+    padding: 10px;
+    margin: 20px;
+    margin-left: 0px;
+  }
+
+  .dealsListing .card-title {
+    font-weight: 400;
+  }
+
+  #sidenav .material-icons {
+    margin-right: 8px;
+    color: black;
+  }
+
+  .usersList, .priceTable {
+    margin: 0 30px;
+    margin-left: 10px;
+  }
+
+  .dealModal {
+    display: flex;
+    justify-content: space-between;
+  }
